@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request Fitur – Nara Optima</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ Request Fitur / Lapor Bug</h1>
+    <p>Halo! Ingin fitur baru atau menemukan bug? Kirim langsung lewat form ini ya~</p>
+    <div id="statusArea" style="display:none;">
+  <p>Status permintaanmu: <span class="badge new">Baru</span></p>
+</div>
+
+    <form id="requestForm">
+        <label for="captcha">Berapa hasil dari 3 + 4?</label>
+<input type="number" id="captcha" required />
+
+      <label for="name">Nama kamu:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="type">Jenis laporan:</label>
+      <select id="type" name="type" required>
+        <option value="fitur">Request Fitur</option>
+        <option value="bug">Lapor Bug</option>
+      </select>
+
+      <label for="message">Deskripsikan idemu / bugnya:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Kirim ke WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+   document.getElementById('requestForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const captcha = parseInt(document.getElementById('captcha').value);
+  if (captcha !== 7) {
+    alert("Jawaban CAPTCHA salah. Coba lagi.");
+    return;
+  }
+
+  const name = document.getElementById('name').value;
+  const type = document.getElementById('type').value;
+  const message = document.getElementById('message').value;
+
+  const whatsappNumber = '6285730414635';
+  const text = `Halo Admin, ada *${type}*\nDari: ${name}\nIsi:\n${message}`;
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+  window.open(url, '_blank'); 
+  // Tampilkan status "Baru"
+  document.getElementById('statusArea').style.display = 'block';
+}); 
+  </script>
+</body>
+</html>
