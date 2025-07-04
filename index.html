@@ -1,101 +1,137 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("MjLcv8FEvolAiMM5E"); // Ganti
-  })();
-</script> 
-<script>
-document.getElementById('requestForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const captcha = parseInt(this.captcha.value);
-  if (captcha !== 7) {
-    alert("❌ CAPTCHA salah");
-    return;
-  }
-
-  emailjs.sendForm('service_s7zlrgr', 'template_28hjpnl', form)
-  .then(() => {
-    form.style.display = "none"; // Sembunyikan form
-    document.getElementById("successMsg").style.display = "block"; // Tampilkan pesan sukses
-  }, (error) => {
-    alert("❌ Gagal mengirim: " + error.text);
-  });
-
-});
-</script>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-<lottie-player 
-  src="https://assets7.lottiefiles.com/private_files/lf30_b5lvwzlg.json"  
-  background="transparent"  
-  speed="1"  
-  style="width: 300px; height: 300px;"  
-  loop  
-  autoplay>
-</lottie-player>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Request Fitur – Nara Optima</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Fitur / Bug</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      background: #0f1c2e;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      margin-top: 30px;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+      background: #112b44;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00c3ff55;
+    }
+    h2 {
+      text-align: center;
+      color: #00c3ff;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #00c3ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .success-msg {
+      display: none;
+      background: #00ffbb;
+      color: #000;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    lottie-player {
+      width: 200px;
+      height: 200px;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
-<audio autoplay loop>
-  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Calming/Minds_Ease_-_Kevin_MacLeod.mp3" type="audio/mpeg">
- 
-</audio>
+
+  <lottie-player
+    src="https://lottie.host/8d607689-70be-42c7-8a2e-c41b7dcbcc7d/bJDqGNG7Y2.json"
+    background="transparent"
+    speed="1"
+    loop
+    autoplay>
+  </lottie-player>
 
   <div class="container">
-    <h1>🛠️ Request Fitur / Lapor Bug</h1>
+    <h2>⚒️ Request Fitur / Lapor Bug</h2>
     <p>Halo! Ingin fitur baru atau menemukan bug? Kirim langsung lewat form ini ya~</p>
-    <div id="statusArea" style="display:none;">
-  <p>Status permintaanmu: <span class="badge new">Baru</span></p>
-</div>
+
+    <div class="success-msg" id="successMsg">
+      ✅ Pesan berhasil dikirim ke admin!
+    </div>
 
     <form id="requestForm">
-        <label for="captcha">Berapa hasil dari 3 + 4?</label>
-<input type="number" id="captcha" required />
+      <label>Berapa hasil dari 3 + 4?</label>
+      <input type="number" id="captcha" required placeholder="Masukkan jawabannya">
 
-      <label for="name">Nama kamu:</label>
-      <input type="text" id="name" name="name" required />
+      <label>Nama kamu:</label>
+      <input type="text" name="name" required>
 
-      <label for="type">Jenis laporan:</label>
-      <select id="type" name="type" required>
-        <option value="fitur">Request Fitur</option>
-        <option value="bug">Lapor Bug</option>
+      <label>Jenis:</label>
+      <select name="type" required>
+        <option value="Request Fitur">Request Fitur</option>
+        <option value="Lapor Bug">Lapor Bug</option>
       </select>
 
-      <label for="message">Deskripsikan idemu / bugnya:</label>
-      <textarea id="message" name="message" required></textarea>
+      <label>Pesan:</label>
+      <textarea name="message" rows="4" required></textarea>
 
-      <button type="submit">Kirim ke Admin LexzVerse</button>
-<div id="successMsg" style="display: none; padding: 20px; background: #0f0; color: #000; border-radius: 8px; text-align: center;">
-  ✅ Permintaan kamu berhasil dikirim ke admin!
-</div>
+      <button type="submit">Kirim</button>
     </form>
-  </div> 
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Calming/Minds_Ease_-_Kevin_MacLeod.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
 
   <script>
-   document.getElementById('requestForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+    emailjs.init("YOUR_PUBLIC_KEY"); // Ganti dengan public key kamu
 
-  const captcha = parseInt(document.getElementById('captcha').value);
-  if (captcha !== 7) {
-    alert("Jawaban CAPTCHA salah. Coba lagi.");
-    return;
-  }
+    document.getElementById("requestForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  const name = document.getElementById('name').value;
-  const type = document.getElementById('type').value;
-  const message = document.getElementById('message').value; 
-  window.open(url, '_blank'); 
-  // Tampilkan status "Baru"
-  document.getElementById('statusArea').style.display = 'block';
-}); 
+      const captcha = parseInt(document.getElementById("captcha").value);
+      if (captcha !== 7) {
+        alert("❌ CAPTCHA salah!");
+        return;
+      }
+
+      emailjs.sendForm("service_s7zlrgr", "template_28hjpnl", this)
+        .then(() => {
+          document.getElementById("requestForm").style.display = "none";
+          document.getElementById("successMsg").style.display = "block";
+        }, (err) => {
+          alert("❌ Gagal mengirim: " + err.text);
+        });
+    });
   </script>
+
 </body>
 </html>
