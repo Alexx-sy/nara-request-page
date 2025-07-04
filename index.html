@@ -91,12 +91,7 @@ document.getElementById('requestForm').addEventListener('submit', function(e) {
 
   const name = document.getElementById('name').value;
   const type = document.getElementById('type').value;
-  const message = document.getElementById('message').value;
-
-  const whatsappNumber = '6285730414635';
-  const text = `Halo Admin, ada *${type}*\nDari: ${name}\nIsi:\n${message}`;
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-
+  const message = document.getElementById('message').value; 
   window.open(url, '_blank'); 
   // Tampilkan status "Baru"
   document.getElementById('statusArea').style.display = 'block';
