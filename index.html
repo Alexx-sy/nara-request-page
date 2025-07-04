@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   (function(){
     emailjs.init("MjLcv8FEvolAiMM5E"); // Ganti
   })();
+</script>
+
+
+<form id="requestForm">
+  <input type="text" name="name" placeholder="Nama" required />
+  <select name="type" required>
+    <option value="Request Fitur">Request Fitur</option>
+    <option value="Lapor Bug">Lapor Bug</option>
+  </select>
+  <textarea name="message" placeholder="Pesan kamu..." required></textarea>
+  <input type="number" name="captcha" placeholder="3 + 4 = ?" required />
+  <button type="submit">Kirim</button>
+</form>
+
+<script>
+document.getElementById('requestForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const captcha = parseInt(this.captcha.value);
+  if (captcha !== 7) {
+    alert("❌ CAPTCHA salah");
+    return;
+  }
+
+  emailjs.sendForm('service_s7zlrgr', 'template_28hjpnl', this)
+    .then(() => {
+      alert("✅ Berhasil dikirim ke admin!");
+      this.reset();
+    }, () => {
+      alert("❌ Gagal mengirim.");
+    });
+});
 </script>
 
   <meta charset="UTF-8" />
