@@ -6,24 +6,7 @@
   (function(){
     emailjs.init("MjLcv8FEvolAiMM5E"); // Ganti
   })();
-</script>
-
-
-<form id="requestForm">
-  <input type="text" name="name" placeholder="Nama" required />
-  <select name="type" required>
-    <option value="Request Fitur">Request Fitur</option>
-    <option value="Lapor Bug">Lapor Bug</option>
-  </select>
-  <textarea name="message" placeholder="Pesan kamu..." required></textarea>
-  <input type="number" name="captcha" placeholder="3 + 4 = ?" required />
-  <button type="submit">Kirim</button>
-<div id="successMsg" style="display: none; padding: 20px; background: #0f0; color: #000; border-radius: 8px; text-align: center;">
-  ✅ Permintaan kamu berhasil dikirim ke admin!
-</div>
-
-</form>
-
+</script> 
 <script>
 document.getElementById('requestForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -75,8 +58,11 @@ document.getElementById('requestForm').addEventListener('submit', function(e) {
       <textarea id="message" name="message" required></textarea>
 
       <button type="submit">Kirim ke Admin LexzVerse</button>
+<div id="successMsg" style="display: none; padding: 20px; background: #0f0; color: #000; border-radius: 8px; text-align: center;">
+  ✅ Permintaan kamu berhasil dikirim ke admin!
+</div>
     </form>
-  </div>
+  </div> 
 
   <script>
    document.getElementById('requestForm').addEventListener('submit', function(e) {
