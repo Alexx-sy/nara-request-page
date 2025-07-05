@@ -3,49 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request & Produk Digital</title>
+  <title>LexzStore | Produk & Request</title>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
-    body { background: #0f1c2e; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
-    .navbar { width: 100%; background: #092537; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 99; }
+    html { scroll-behavior: smooth; }
+    body { background: #0f1c2e; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; padding: 0; }
+    .navbar { width: 100%; background: #092537; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 99; }
     .nav-brand { color: #00c3ff; font-weight: bold; font-size: 18px; }
-    .nav-links { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; }
+    .nav-links { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0; }
     .nav-links li a { color: white; text-decoration: none; padding: 6px 12px; background: #004c74; border-radius: 5px; font-size: 14px; }
     .nav-links li a:hover { background: #00c3ff; color: #000; }
-    .container { margin-top: 30px; padding: 20px; max-width: 400px; width: 90%; background: #112b44; border-radius: 10px; box-shadow: 0 0 20px #00c3ff55; }
-    h2 { text-align: center; color: #00c3ff; }
-    label { display: block; margin-top: 15px; }
-    input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: none; border-radius: 5px; }
-    button { margin-top: 20px; width: 100%; padding: 10px; background: #00c3ff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-    .success-msg { display: none; background: #00ffbb; color: #000; padding: 15px; margin-top: 20px; border-radius: 8px; text-align: center; }
+    .hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+    .hero h1 { font-size: 2.5em; margin: 0; color: #00c3ff; }
+    .hero p { font-size: 1.2em; max-width: 600px; }
+    .hero a { margin-top: 20px; background: #00c3ff; color: #000; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; }
+    .section-title { text-align: center; font-size: 1.6em; margin-top: 40px; color: #00c3ff; }
+    .container { margin-top: 20px; padding: 20px; max-width: 400px; width: 90%; background: #112b44; border-radius: 10px; box-shadow: 0 0 20px #00c3ff55; margin-inline: auto; }
     .product-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 1200px; padding: 20px; }
     .product-card { width: 250px; background: #183b5a; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px #00c3ff33; }
     .product-card h3 { margin: 0 0 5px 0; }
     .product-card p { font-size: 14px; }
     .product-card button { margin-top: 10px; background: #00c3ff; color: white; border: none; padding: 8px; width: 100%; border-radius: 5px; cursor: pointer; }
+    input, select, textarea, button { font-family: inherit; }
+    .success-msg { display: none; background: #00ffbb; color: #000; padding: 15px; margin-top: 20px; border-radius: 8px; text-align: center; }
   </style>
 </head>
 <body>
-
   <nav class="navbar">
     <div class="nav-brand">LexzStore</div>
     <ul class="nav-links">
-      <li><a href="#" onclick="filterItems('all')">Semua</a></li>
-      <li><a href="#" onclick="filterItems('hosting')">Hosting</a></li>
-      <li><a href="#" onclick="filterItems('bot')">Bot</a></li>
-      <li><a href="#" onclick="filterItems('sosmed')">Sosmed</a></li>
-      <li><a href="#" onclick="filterItems('desain')">Desain</a></li>
-      <li><a href="#" onclick="filterItems('course')">Course</a></li>
-      <li><a href="#" onclick="filterItems('hacking')">Hacking</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#request">Request</a></li>
     </ul>
   </nav>
 
+  <section class="hero" id="home">
+    <h1>Selamat datang di LexzStore</h1>
+    <p>Tempat kamu mendapatkan produk digital terbaik — mulai dari hosting, bot, desain, sampai course eksklusif.</p>
+    <a href="#produk">Lihat Produk Kami</a>
+  </section>
+
+  <h2 class="section-title" id="produk">📦 Produk Digital</h2>
+  <div class="product-grid" id="productGrid">
+    <!-- produk akan ditambahkan otomatis via script sebelumnya -->
+  </div>
+
+  <h2 class="section-title" id="request">🛠️ Request Fitur / Lapor Bug</h2>
   <div class="container">
-    <h2>🛠️ Request Fitur / Lapor Bug</h2>
     <p>Halo! Ingin fitur baru atau menemukan bug? Kirim langsung lewat form ini ya~</p>
-
     <div class="success-msg" id="successMsg">✅ Pesan berhasil dikirim ke admin!</div>
-
     <form id="requestForm">
       <label>Berapa hasil dari 3 + 4?</label>
       <input type="number" id="captcha" required placeholder="Masukkan jawabannya">
@@ -62,34 +69,9 @@
     </form>
   </div>
 
-  <div class="product-grid" id="productGrid">
-    <div class="product-card" data-category="hosting"><h3>VPS SG 2GB</h3><p>Full root access, ready deploy.</p><button onclick="orderItem('VPS SG 2GB')">Pesan</button></div>
-    <div class="product-card" data-category="hosting"><h3>VPS USA 4GB</h3><p>Stabil & murah, cocok untuk bot atau panel.</p><button onclick="orderItem('VPS USA 4GB')">Pesan</button></div>
-    <div class="product-card" data-category="hosting"><h3>Panel Pterodactyl</h3><p>Siap pakai, gratis domain & SSL.</p><button onclick="orderItem('Panel Pterodactyl')">Pesan</button></div>
-
-    <div class="product-card" data-category="bot"><h3>SC Bot WhatsApp</h3><p>Auto-response, fitur lengkap.</p><button onclick="orderItem('SC Bot WhatsApp')">Pesan</button></div>
-    <div class="product-card" data-category="bot"><h3>SC Bot Telegram</h3><p>Bot musik, anime, dan utilitas.</p><button onclick="orderItem('SC Bot Telegram')">Pesan</button></div>
-    <div class="product-card" data-category="bot"><h3>Sewa Bot SPAM</h3><p>Bot siap pakai untuk spam edukatif.</p><button onclick="orderItem('Sewa Bot SPAM')">Pesan</button></div>
-
-    <div class="product-card" data-category="sosmed"><h3>Nomor Kosong All Region</h3><p>Untuk daftar akun baru.</p><button onclick="orderItem('Nomor Kosong All Region')">Pesan</button></div>
-    <div class="product-card" data-category="sosmed"><h3>Suntik Followers</h3><p>Instagram/TikTok real followers.</p><button onclick="orderItem('Suntik Followers')">Pesan</button></div>
-    <div class="product-card" data-category="sosmed"><h3>Auto View TikTok</h3><p>Ratusan view tiap video otomatis.</p><button onclick="orderItem('Auto View TikTok')">Pesan</button></div>
-
-    <div class="product-card" data-category="desain"><h3>Canva Pro 30 Hari</h3><p>Akun siap pakai & aktif.</p><button onclick="orderItem('Canva Pro 30 Hari')">Pesan</button></div>
-    <div class="product-card" data-category="desain"><h3>Jasa Desain Logo</h3><p>Logo profesional untuk brand kamu.</p><button onclick="orderItem('Jasa Desain Logo')">Pesan</button></div>
-    <div class="product-card" data-category="desain"><h3>Photoshop Premium</h3><p>Akun login siap pakai & aktif.</p><button onclick="orderItem('Photoshop Premium')">Pesan</button></div>
-
-    <div class="product-card" data-category="course"><h3>Course Bot WhatsApp</h3><p>Belajar buat bot dari nol.</p><button onclick="orderItem('Course Bot WhatsApp')">Pesan</button></div>
-    <div class="product-card" data-category="course"><h3>Course Panel Hosting</h3><p>Langkah demi langkah buat panel.</p><button onclick="orderItem('Course Panel Hosting')">Pesan</button></div>
-    <div class="product-card" data-category="course"><h3>Course Hacking Dasar</h3><p>Pemula ke mahir, dengan video & PDF.</p><button onclick="orderItem('Course Hacking Dasar')">Pesan</button></div>
-
-    <div class="product-card" data-category="hacking"><h3>Dasar Ethical Hacking</h3><p>PDF + Video Course</p><button onclick="orderItem('Dasar Ethical Hacking')">Pesan</button></div>
-    <div class="product-card" data-category="hacking"><h3>Tools Pentest Ready</h3><p>Termux/VM penetration kit.</p><button onclick="orderItem('Tools Pentest Ready')">Pesan</button></div>
-    <div class="product-card" data-category="hacking"><h3>Bypass OTP Guide</h3><p>Panduan bypass OTP edukatif.</p><button onclick="orderItem('Bypass OTP Guide')">Pesan</button></div>
-  </div>
-
   <script>
     emailjs.init("MjLcv8FEvolAiMM5E");
+
     document.getElementById("requestForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const captcha = parseInt(document.getElementById("captcha").value);
@@ -104,12 +86,7 @@
           alert("❌ Gagal mengirim: " + err.text);
         });
     });
-    function filterItems(category) {
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-      });
-    }
+
     function orderItem(productName) {
       const name = prompt("Masukkan nama kamu:");
       const pesan = prompt("Tulis pesan tambahan (opsional):");
@@ -126,6 +103,14 @@
           alert("❌ Gagal kirim pesanan: " + err.text);
         });
     }
+
+    function filterItems(category) {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+      });
+    }
   </script>
+
 </body>
 </html>
