@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request - LexzStore</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">LexzStore</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="produk.html">Produk</a></li>
+      <li><a href="request.html">Request</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>🛠️ Kirim Request / Bug Report</h2>
+    <div class="success-msg" id="successMsg">✅ Pesan berhasil dikirim ke admin!</div>
+    <form id="requestForm">
+      <label>Berapa hasil dari 3 + 4?</label>
+      <input type="number" id="captcha" required placeholder="Masukkan jawabannya">
+      <label>Nama kamu:</label>
+      <input type="text" name="name" required>
+      <label>Jenis:</label>
+      <select name="type" required>
+        <option value="Request Fitur">Request Fitur</option>
+        <option value="Lapor Bug">Lapor Bug</option>
+      </select>
+      <label>Pesan:</label>
+      <textarea name="message" rows="4" required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+
+  <script>
+    emailjs.init("MjLcv8FEvolAiMM5E");
+    document.getElementById("requestForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const captcha = parseInt(document.getElementById("captcha").value);
+      if (captcha !== 7) {
+        alert("❌ CAPTCHA salah!"); return;
+      }
+      emailjs.sendForm("service_s7zlrgr", "template_28hjpnl", this)
+        .then(() => {
+          document.getElementById("requestForm").style.display = "none";
+          document.getElementById("successMsg").style.display = "block";
+        }, (err) => {
+          alert("❌ Gagal mengirim: " + err.text);
+        });
+    });
+  </script>
+</body>
+</html>
