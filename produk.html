@@ -128,9 +128,9 @@
 
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-  emailjs.init("MjLcv8FEvolAiMM5E");
+  emailjs.init("MjLcv8FEvolAiMM5E"); // ← Ganti dengan punyamu
 
   function filterKategori(kat) {
     const cards = document.querySelectorAll(".product-card");
@@ -146,16 +146,24 @@
   function pesanProduk(namaProduk) {
     const nama = prompt("Masukkan nama kamu:");
     if (!nama) return;
+
+    const nomor = prompt("Masukkan nomor WhatsApp kamu:");
+    if (!nomor || !/^\\d{9,15}$/.test(nomor)) {
+      alert("❌ Nomor tidak valid. Masukkan tanpa +62, contoh: 857xxxxxxx");
+      return;
+    }
+
     const pesan = prompt("Catatan tambahan (opsional):") || "";
 
     const params = {
       name: nama,
+      phone: nomor,
       type: "Pesan Produk",
-      message: `Saya ingin memesan produk: ${namaProduk}\n${pesan}`
+      message: `Saya ingin memesan produk: ${namaProduk}\n\nCatatan: ${pesan}\n\nNo. WhatsApp: ${nomor}`
     };
 
     emailjs.send("service_s7zlrgr", "template_28hjpnl", params)
-      .then(() => alert("✅ Pesanan dikirim ke Admin!"))
+      .then(() => alert("✅ Pesanan berhasil dikirim ke Admin!"))
       .catch((e) => alert("❌ Gagal kirim: " + e.text));
   }
 </script>
