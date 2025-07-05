@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Fitur / Bug</title>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
     body {
       background: #0f1c2e;
@@ -61,22 +60,9 @@
       border-radius: 8px;
       text-align: center;
     }
-    lottie-player {
-      width: 200px;
-      height: 200px;
-      margin: 20px auto;
-    }
   </style>
 </head>
 <body>
-
-  <lottie-player
-    src="https://lottie.host/8d607689-70be-42c7-8a2e-c41b7dcbcc7d/bJDqGNG7Y2.json"
-    background="transparent"
-    speed="1"
-    loop
-    autoplay>
-  </lottie-player>
 
   <div class="container">
     <h2>⚒️ Request Fitur / Lapor Bug</h2>
@@ -106,13 +92,8 @@
     </form>
   </div>
 
-  <audio autoplay loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Calming/Minds_Ease_-_Kevin_MacLeod.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
-  </audio>
-
   <script>
-    emailjs.init("YOUR_PUBLIC_KEY"); // Ganti dengan public key kamu
+    emailjs.init("MjLcv8FEvolAiMM5E"); // Ganti dengan public key kamu
 
     document.getElementById("requestForm").addEventListener("submit", function(e) {
       e.preventDefault();
