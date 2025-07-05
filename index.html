@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request Fitur / Bug</title>
+  <title>Request & Produk Digital</title>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     body {
@@ -60,6 +60,52 @@
       border-radius: 8px;
       text-align: center;
     }
+    .filter-buttons {
+      margin: 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .filter-buttons button {
+      padding: 8px 14px;
+      background: #004c74;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 1200px;
+      padding: 20px;
+    }
+    .product-card {
+      width: 250px;
+      background: #183b5a;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00c3ff33;
+    }
+    .product-card h3 {
+      margin: 0 0 5px 0;
+    }
+    .product-card p {
+      font-size: 14px;
+    }
+    .product-card button {
+      margin-top: 10px;
+      background: #00c3ff;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -92,6 +138,50 @@
     </form>
   </div>
 
+  <div class="filter-buttons">
+    <button onclick="filterItems('all')">Semua</button>
+    <button onclick="filterItems('hosting')">Hosting</button>
+    <button onclick="filterItems('bot')">Bot</button>
+    <button onclick="filterItems('sosmed')">Sosmed</button>
+    <button onclick="filterItems('desain')">Desain</button>
+    <button onclick="filterItems('course')">Course</button>
+    <button onclick="filterItems('hacking')">Hacking</button>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+    <!-- Produk default -->
+    <div class="product-card" data-category="hosting">
+      <h3>VPS SG 2GB</h3>
+      <p>Full root access, ready deploy.</p>
+      <button onclick="orderItem('VPS SG 2GB')">Pesan</button>
+    </div>
+    <div class="product-card" data-category="bot">
+      <h3>SC Bot WhatsApp</h3>
+      <p>Auto-response, fitur lengkap.</p>
+      <button onclick="orderItem('SC Bot WhatsApp')">Pesan</button>
+    </div>
+    <div class="product-card" data-category="sosmed">
+      <h3>Nomor Kosong All Region</h3>
+      <p>Untuk daftar akun baru.</p>
+      <button onclick="orderItem('Nomor Kosong All Region')">Pesan</button>
+    </div>
+    <div class="product-card" data-category="desain">
+      <h3>Canva Pro 30 Hari</h3>
+      <p>Akun siap pakai & aktif.</p>
+      <button onclick="orderItem('Canva Pro 30 Hari')">Pesan</button>
+    </div>
+    <div class="product-card" data-category="course">
+      <h3>Course Bot WhatsApp</h3>
+      <p>Belajar buat bot dari nol.</p>
+      <button onclick="orderItem('Course Bot WhatsApp')">Pesan</button>
+    </div>
+    <div class="product-card" data-category="hacking">
+      <h3>Dasar Ethical Hacking</h3>
+      <p>PDF + Video Course</p>
+      <button onclick="orderItem('Dasar Ethical Hacking')">Pesan</button>
+    </div>
+  </div>
+
   <script>
     emailjs.init("MjLcv8FEvolAiMM5E"); // Ganti dengan public key kamu
 
@@ -112,6 +202,32 @@
           alert("❌ Gagal mengirim: " + err.text);
         });
     });
+
+    function filterItems(category) {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+      });
+    }
+
+    function orderItem(productName) {
+      const name = prompt("Masukkan nama kamu:");
+      const pesan = prompt("Tulis pesan tambahan (opsional):");
+      if (!name) return;
+
+      const templateParams = {
+        name: name,
+        type: 'Pesanan Produk',
+        message: `Saya ingin memesan: ${productName}.\n${pesan || ''}`
+      };
+
+      emailjs.send("service_s7zlrgr", "template_28hjpnl", templateParams)
+        .then(() => {
+          alert("\u2705 Pesanan berhasil dikirim ke admin!");
+        }, (err) => {
+          alert("\u274c Gagal kirim pesanan: " + err.text);
+        });
+    }
   </script>
 
 </body>
