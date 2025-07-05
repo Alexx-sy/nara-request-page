@@ -147,11 +147,12 @@
     const nama = prompt("Masukkan nama kamu:");
     if (!nama) return;
 
-    const nomor = prompt("Masukkan nomor WhatsApp kamu:");
-    if (!nomor || !/^\\d{9,15}$/.test(nomor)) {
-      alert("❌ Nomor tidak valid. Masukkan tanpa +62, contoh: 857xxxxxxx");
-      return;
-    }
+   const nomor = prompt("Masukkan nomor WhatsApp kamu:");
+if (!nomor || !/^(?:\+62|62|0)?8[1-9][0-9]{7,11}$/.test(nomor)) {
+  alert("❌ Nomor tidak valid.\nContoh benar: 0857xxxxxxx atau +62857xxxxxxx");
+  return;
+}
+
 
     const pesan = prompt("Catatan tambahan (opsional):") || "";
 
