@@ -3,176 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk - LexzVerse</title>
+  <title>Produk Digital - LexzStore</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
   <nav class="navbar">
-    <div class="nav-brand">LexzVerse</div>
+    <div class="nav-brand">LexzStore</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="produk.html">Produk</a></li>
-      <li><a href="request.html">Request</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
     </ul>
   </nav>
- 
-   <h2 class="section-title">📦 Produk Digital</h2>
-<select id="categoryFilter" onchange="filterKategori(this.value)">
-  <option value="all">Semua Kategori</option>
-  <option value="hosting">Hosting</option>
-  <option value="bot">Bot</option>
-  <option value="sosmed">Suntik Sosmed</option>
-  <option value="desain">Design Grafis</option> 
-  <option value="course">Course</option>
-  <option value="apk">Aplikasi Premium</option>
-  <option value="hack">Ethical Hacking</option>
-  ...
-</select>
 
-  <div class="product-grid" id="productGrid">
-    <div class="product-card" data-category="hosting">
-      <h3>VPS SG 2GB</h3>
-      <p>Full root access, ready deploy.</p>
-       <button onclick="pesanProduk('VPS SG 2GB')">Pesan</button> 
-    </div>
-    <div class="product-card" data-category="hosting">
-      <h3>Panel Pterodactyl</h3>
-      <p>Auto setup, cocok untuk hosting bot/game.</p>
-       <button onclick="pesanProduk('Panel Pterodactyl')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="bot">
-      <h3>SC Bot WhatsApp</h3>
-      <p>Bot auto-respon, cocok untuk bisnis & komunitas.</p>
-       <button onclick="pesanProduk('SC Bot WhatsApp')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="bot">
-      <h3>Sewa Bot WhatsApp</h3>
-      <p>Bot aktif 24/7, maintenance by admin.</p>
-<button onclick="pesanProduk('Sewa Bot WhatsApp')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="sosmed">
-      <h3>Nomor Kosong All Region</h3>
-      <p>Cocok untuk verifikasi akun baru.</p>
-<button onclick="pesanProduk('Nomor Kosong All Region')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="sosmed">
-      <h3>Jasa Suntik Followers</h3> 
-      <p>Instagram, TikTok, dan lainnya. Real & cepat.</p>
-<button onclick="pesanProduk('Jasa Suntik Followers')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="sosmed">
-      <h3>Jasa Suntik Viewers & Like</h3>
-      <p>Meningkatkan kredibilitas konten sosial media.</p>
-<button onclick="pesanProduk('Jasa Suntik Viewers & Like')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="desain">
-      <h3>Canva Pro 30 Hari</h3>
-      <p>Akun siap pakai dengan premium access.</p>
-<button onclick="pesanProduk('Canva Pro 30 Hari')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="desain">
-      <h3>Jasa Desain Logo</h3>
-      <p>Logo custom premium, revisi maksimal 2x.</p>
-<button onclick="pesanProduk('Jasa Desain Logo')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="desain">
-      <h3>Jasa Edit Foto/Poster</h3>
-      <p>Edit sesuai permintaan, cepat & rapi.</p>
-<button onclick="pesanProduk('Jasa Edit Foto/Poster')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="course">
-      <h3>Course Hacking Dasar</h3>
-      <p>Belajar dari nol sampai mahir ethical hacking.</p>
-<button onclick="pesanProduk('Course Hacking Dasar')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="course">
-      <h3>Course Membuat Bot WhatsApp</h3>
-      <p>Bahas pembuatan bot WA dari dasar hingga deploy.</p>
-<button onclick="pesanProduk('Course Membuat Bot WhatsApp')">Pesan</button> 
-    </div>
-    <div class="product-card" data-category="course">
-      <h3>Course Dasar Hosting</h3>
-      <p>Belajar panel, VPS, domain, deployment.</p>
-<button onclick="pesanProduk('Course Dasar Hosting')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="course">
-      <h3>Course Fullstack Website</h3>
-      <p>Frontend + Backend dengan project nyata.</p>
-<button onclick="pesanProduk('Course Fullstack Website')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="apk">
-      <h3>Spotify Premium Akun</h3>
-      <p>Akun login Spotify bebas iklan & skip bebas.</p>
-      <button onclick="pesanProduk('Spotify Premium Akun')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="apk">
-      <h3>Netflix Premium Shared</h3>
-      <p>Akun 1 bulan (slot bersama), HD Ready.</p>
-<button onclick="pesanProduk('Netflix Premium Shared')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="apk">
-      <h3>ChatGPT Plus Login</h3>
-      <p>Akun login ChatGPT Plus (GPT-4), 30 hari.</p>
-<button onclick="pesanProduk('ChatGPT Plus Login')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="hack">
-      <h3>Jasa Uji Keamanan Website</h3>
-      <p>Audit dan laporan keamanan dari sisi client & server.</p>
-<button onclick="pesanProduk('Jasa Uji Keamanan Website')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="hack">
-      <h3>Jasa Bypass Login Form</h3>
-      <p>Khusus sistem edukasi / demo. Ethical use only.</p>
-      <button onclick="pesanProduk('Jasa Bypass Login Form')">Pesan</button>
-    </div>
-    <div class="product-card" data-category="hack">
-      <h3>Jasa Reverse Engineering APK</h3>
-      <p>Analisis & modifikasi APK untuk edukasi/pembelajaran.</p>
-<button onclick="pesanProduk('Jasa Reverse Engineering APK')">Pesan</button>
- 
+  <section class="highlight">
+    <h2>📦 Daftar Produk & Jasa Digital</h2>
+    <select id="categoryFilter" onchange="filterKategori(this.value)" style="margin-bottom: 2rem; padding: 0.5rem;">
+      <option value="all">Semua Kategori</option>
+      <option value="hosting">Hosting</option>
+      <option value="bot">Bot</option>
+      <option value="sosmed">Sosmed</option>
+      <option value="desain">Desain</option>
+      <option value="course">Course</option>
+      <option value="apk">Aplikasi Premium</option>
+      <option value="hack">Hack/Ethical</option>
+    </select>
 
+    <div class="product-grid" id="productGrid">
+      <!-- Produk akan dimuat lewat JS -->
     </div>
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("MjLcv8FEvolAiMM5E"); // ← Ganti dengan punyamu
+  </section>
 
-  function filterKategori(kat) {
-    const cards = document.querySelectorAll(".product-card");
-    cards.forEach(card => {
-      if (kat === "all" || card.dataset.category === kat) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
+  <footer class="footer">
+    <p>&copy; 2025 LexzStore. Powered by LexzTheRuller.</p>
+  </footer>
+
+  <script>
+    emailjs.init("MjLcv8FEvolAiMM5E"); // Ganti sesuai public key
+
+    const produkList = [
+      { nama: "VPS SG 2GB", kategori: "hosting", deskripsi: "Full root access, ready deploy." },
+      { nama: "Panel Pterodactyl", kategori: "hosting", deskripsi: "Auto setup, cocok untuk hosting bot/game." },
+      { nama: "SC Bot WhatsApp", kategori: "bot", deskripsi: "Bot auto-respon, cocok untuk bisnis & komunitas." },
+      { nama: "Sewa Bot WA 24/7", kategori: "bot", deskripsi: "Bot aktif nonstop, maintenance oleh tim kami." },
+      { nama: "Nomor Kosong All Region", kategori: "sosmed", deskripsi: "Cocok untuk verifikasi akun baru." },
+      { nama: "Suntik Followers & Views", kategori: "sosmed", deskripsi: "Naikkan engagement dengan cepat." },
+      { nama: "Desain Logo Premium", kategori: "desain", deskripsi: "Logo elegan, custom, revisi max 2x." },
+      { nama: "Edit Foto/Poster", kategori: "desain", deskripsi: "Desain konten sesuai kebutuhan kamu." },
+      { nama: "Course Hacking Dasar", kategori: "course", deskripsi: "Belajar ethical hacking dari nol." },
+      { nama: "Course Fullstack Web", kategori: "course", deskripsi: "Frontend + backend lengkap dengan project." },
+      { nama: "Spotify Premium Login", kategori: "apk", deskripsi: "Akun login Spotify bebas iklan & skip." },
+      { nama: "Netflix Premium Shared", kategori: "apk", deskripsi: "Slot bersama, HD quality 1 bulan." },
+      { nama: "Uji Keamanan Website", kategori: "hack", deskripsi: "Audit keamanan client-server site kamu." },
+      { nama: "Bypass Form Login (Demo)", kategori: "hack", deskripsi: "Untuk edukasi/demo testing web login." }
+    ];
+
+    function tampilkanProduk(kategori = "all") {
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = "";
+      const hasil = produkList.filter(p => kategori === "all" || p.kategori === kategori);
+      hasil.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "feature-box";
+        card.innerHTML = `
+          <h3>${p.nama}</h3>
+          <p>${p.deskripsi}</p>
+          <button onclick="pesanProduk('${p.nama}')">Pesan</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterKategori(kat) {
+      tampilkanProduk(kat);
+    }
+
+    function pesanProduk(namaProduk) {
+      const nama = prompt("Masukkan nama kamu:");
+      if (!nama) return;
+
+      const nomor = prompt("Masukkan nomor WhatsApp kamu:");
+      if (!nomor || !/^(?:\+62|62|0)?8[1-9][0-9]{7,11}$/.test(nomor)) {
+        alert("❌ Nomor tidak valid. Contoh: 0857xxxxxxx");
+        return;
       }
-    });
-  }
 
-  function pesanProduk(namaProduk) {
-    const nama = prompt("Masukkan nama kamu:");
-    if (!nama) return;
+      const pesan = prompt("Catatan tambahan (opsional):") || "-";
 
-   const nomor = prompt("Masukkan nomor WhatsApp kamu:");
-if (!nomor || !/^(?:\+62|62|0)?8[1-9][0-9]{7,11}$/.test(nomor)) {
-  alert("❌ Nomor tidak valid.\nContoh benar: 0857xxxxxxx atau +62857xxxxxxx");
-  return;
-}
+      const params = {
+        name: nama,
+        phone: nomor,
+        type: "Pesan Produk",
+        message: `Saya ingin memesan produk: ${namaProduk}\n\nCatatan: ${pesan}`
+      };
 
+      emailjs.send("service_s7zlrgr", "template_28hjpnl", params)
+        .then(() => alert("✅ Pesanan berhasil dikirim!"))
+        .catch(e => alert("❌ Gagal mengirim: " + e.text));
+    }
 
-    const pesan = prompt("Catatan tambahan (opsional):") || "";
-
-    const params = {
-      name: nama,
-      phone: nomor,
-      type: "Pesan Produk",
-      message: `Saya ingin memesan produk: ${namaProduk}\n\nCatatan: ${pesan}\n\nNo. WhatsApp: ${nomor}`
-    };
-
-    emailjs.send("service_s7zlrgr", "template_28hjpnl", params)
-      .then(() => alert("✅ Pesanan berhasil dikirim ke Admin!"))
-      .catch((e) => alert("❌ Gagal kirim: " + e.text));
-  }
-</script>
-
+    tampilkanProduk();
+  </script>
 </body>
 </html>
